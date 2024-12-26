@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - The Most Beautiful Girl in the World</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            padding: 2rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery img:active {
+            transform: scale(0.95) rotate(-1deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #ff758c;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+
+            .gallery img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gallery of the Most Beautiful Girl in the World</h1>
+        <p>Athira Fahmi</p>
+    </header>
+
+    <div class="gallery" id="gallery"></div>
+
+    <footer>
+        <p>&copy; 2024 - Celebrating Beauty</p>
+    </footer>
+
+    <!-- Audio Background -->
+    <audio id="backgroundAudio" loop>
+        <source src="Perfect.mp3" type="audio/mpeg">
+        <source src="Perfect.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        window.onload = function() {
+            const audio = document.getElementById('backgroundAudio');
+            audio.play();
+        };
+    </script>
+    <script>
+        const gallery = document.getElementById('gallery');
+
+        for (let i = 1; i <= 71; i++) {
+            const img = document.createElement('img');
+            img.src = `images/${i}${i <= 42 ? '.jpg' : '.jpeg'}`;
+            img.alt = `Photo ${i}`;
+            img.classList.add('fade-in');
+            img.style.animationDelay = `${i * 0.1}s`;
+            gallery.appendChild(img);
+        }
+    </script>
+</body>
+</html>
